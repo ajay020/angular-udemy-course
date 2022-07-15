@@ -1,0 +1,31 @@
+<style>
+    .bi{
+        color:blue;
+    }
+    p{
+        background:black;
+        padding:1rem;
+        width: 200px; 
+    }
+</style>
+
+<i class="bi" 
+    [class.bi-star]="!isSelected" 
+    [class.bi-star-fill]="isSelected"
+    (click)="onClick()">
+</i>
+
+<!-- using ngClass we can apply multiple class with the help of ngClass Object -->
+
+<i 
+    class="bi"
+    ngClass="{
+        'bi-star':!isSelected,
+        'bi-star-fill': isSelected
+    }" 
+    (click)="onClick()">
+</i>
+
+<p style="color: brown;">
+    text 
+</p>

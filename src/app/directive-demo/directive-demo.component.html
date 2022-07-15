@@ -1,0 +1,68 @@
+<p>Directives Demo</p>
+
+<!-- ngIf -->
+
+<div *ngIf="list.length > 0; then courseList else noCourse "></div>
+
+<ng-template #courseList>
+    Courses list 
+</ng-template>
+<ng-template #noCourse>
+    no courses 
+</ng-template>
+
+<!-- ngSwitch -->
+
+<ul class="nav nav-pills">
+    <li [class.active]="viewMode == 'map' " (click) ="viewMode = 'list'" ><a class="p-3">Mapview</a></li>
+    <li [class.active]="viewMode == 'list' " (click) ="viewMode = 'map'"><a class="p-3">ListView</a></li>
+</ul>
+<div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'map'">Mapview content</div>
+    <div *ngSwitchCase="'list'">Listview content</div>
+    <div *ngSwitchDefault>Otherwise</div>
+</div>
+
+<!-- ngFor -->
+
+<!-- <ul>
+    <li *ngFor="let user of users; let i = index; even as isEven;">
+      {{i}}  -  {{user.name}} <span *ngIf="isEven">(Even)</span>
+    </li>
+</ul> -->
+<div>
+    <ul>
+        <li *ngFor="let user of users; trackBy:trackUser">
+            {{user.name}} <button (click)="onRemove(user)">Remove</button> <button (click)="onUpdate(user)">Update</button>
+        </li>
+    </ul>
+    <button (click)="onAdd()">Add user</button>
+    <button (click) ="onLoadUsers()">Load users</button>
+</div>
+
+
+
+<!-- ngStyle -->
+<!-- It similar to ngClass.  -->
+
+  <!-- <button
+    [style.backgroundColor] = "canSave ? 'green' : 'black' "
+    [style.color] = "canSave ? 'black' : 'white' "
+    [style.fontWeight] = "canSave ? 'bold' : 'normal' "
+  >
+    Save with ngStyle 
+  </button> -->
+
+  <!-- with ngStyle  -->
+  <button
+     [ngStyle]="{
+        backgroundColor: canSave ? 'green' : 'black',
+        color: canSave ? 'black' : 'white',
+        fontWeight:  canSave ? 'bold' : 'normal'
+     }"
+>
+  Save
+</button>
+
+<!-- custom directive  -->
+<input type="text" [appInputFormat]=" 'lowercase' ">

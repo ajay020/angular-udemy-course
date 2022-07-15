@@ -1,0 +1,14 @@
+<style>
+    .bi-heart-fill{
+        color:deeppink;
+    }
+    i{
+        cursor: pointer;
+        margin-right: 4px;
+    }
+</style>
+
+<div> 
+    <i class="bi" [class.bi-heart]="!isSelected" [class.bi-heart-fill] ="isSelected" (click) ="onClick()"  ></i>
+     <span>{{likesCount}}</span>
+</div>

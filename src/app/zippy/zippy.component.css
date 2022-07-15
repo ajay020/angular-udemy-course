@@ -1,0 +1,13 @@
+.heading{
+    display: flex;
+    border: 1px solid lightgray;
+    cursor: pointer;
+}
+h6{
+    padding: 4px;
+    display: inline-block;
+    /* width: 100%; */
+}
+i{
+    margin-left: auto;
+}

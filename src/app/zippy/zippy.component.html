@@ -1,0 +1,13 @@
+<div>
+    <div class="heading" (click)="toggle()">
+        <h6 >{{title}} </h6>
+        <i 
+         [ngClass]="{   
+            'bi bi-chevron-down': isSelected ,
+            'bi bi-chevron-up' : !isSelected
+        }"  ></i>
+    </div>
+    <div *ngIf="isSelected">
+        <ng-content ></ng-content>
+    </div>
+</div>
