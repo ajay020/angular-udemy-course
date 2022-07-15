@@ -1,1 +1,50 @@
-<p>udemy-form works!</p>
+<form #f = ngForm (ngSubmit) ="submit(f.value)">
+    <div class="form-group">
+        <label for="firstName">
+            Course Name
+        </label>
+        <input
+            minlength="5" 
+            required 
+            ngModel
+            #courseName="ngModel"
+            name="courseName"
+            type="text"
+            id="courseName" 
+            class="form-control">
+        <div class="alert alert-danger" *ngIf="courseName.invalid && courseName.touched">
+            <p *ngIf="courseName?.errors?.['required']" class="m-0">
+                Name is required.
+            </p>
+            <p *ngIf="courseName?.errors?.['minlength']" class="m-0">
+                Name should be minimum 5 characters.
+            </p>
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <label for="category">Category</label>
+        <select
+          required
+          #category="ngModel" 
+          ngModel
+          name="category" 
+          id="category"
+          class="form-control">
+            <option *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+            </option>
+        </select>
+        <div class="alert alert-danger" *ngIf="category.invalid && category.touched">
+            <p *ngIf="courseName?.errors?.['required']">Select a category.</p>
+        </div>
+    </div>
+    <div class="checkbox mt-3">
+        <label>
+          <input ngModel  type="checkbox" name="hasGuarantee">  30-day money-back guarantee.
+        </label>
+    </div>
+    <div class="mt-3">
+        {{f.value | json}}
+    </div>
+    <button class="btn btn-primary mt-3" [disabled]="f.invalid" >Submit</button>
+</form>
