@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -19,6 +19,7 @@ import { InputFormatDirective } from './input-format.directive';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { UdemyFormComponent } from './udemy-form/udemy-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
@@ -37,10 +38,12 @@ import { UdemyFormComponent } from './udemy-form/udemy-form.component';
     ZippyComponent,
     ContactFormComponent,
     UdemyFormComponent,
+    SignupFormComponent
   ],
   imports: [
-BrowserModule,
-  FormsModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     /*  Angular autometically inject the instance of the service class to 
