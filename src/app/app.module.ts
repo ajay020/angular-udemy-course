@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses.component';
@@ -22,6 +23,9 @@ import { UdemyFormComponent } from './udemy-form/udemy-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
+import { PostsComponent } from './posts/posts.component';
+import { PostService } from './services/post.service';
+import { AppErrorHandler } from './common/app-error-handler';
 
 @NgModule({
   declarations: [
@@ -42,12 +46,14 @@ import { ResetPasswordFormComponent } from './reset-password-form/reset-password
     UdemyFormComponent,
     SignupFormComponent,
     NewCourseFormComponent,
-    ResetPasswordFormComponent
+    ResetPasswordFormComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     /*  Angular autometically inject the instance of the service class to 
@@ -56,7 +62,9 @@ import { ResetPasswordFormComponent } from './reset-password-form/reset-password
         instance.
     */
     CoursesService,
-    AuthorsService
+    AuthorsService,
+    PostService,
+    {provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
 })
