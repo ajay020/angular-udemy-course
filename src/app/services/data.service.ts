@@ -7,13 +7,6 @@ import { NotFoundError } from '../common/not-found-error';
 import { BadInput } from '../common/bad-input';
 import { Inject } from '@angular/core';
 
-interface Post {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-  }
-
 @Injectable({
   providedIn: 'root'
 })

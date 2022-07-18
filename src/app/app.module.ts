@@ -26,6 +26,12 @@ import { ResetPasswordFormComponent } from './reset-password-form/reset-password
 import { PostsComponent } from './posts/posts.component';
 import { PostService } from './services/post.service';
 import { AppErrorHandler } from './common/app-error-handler';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { FollowerService } from './services/follower.service';
 
 @NgModule({
   declarations: [
@@ -47,13 +53,23 @@ import { AppErrorHandler } from './common/app-error-handler';
     SignupFormComponent,
     NewCourseFormComponent,
     ResetPasswordFormComponent,
-    PostsComponent
+    PostsComponent,
+    HomeComponent,
+    NavbarComponent,
+    GithubFollowersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+        {path:'', component:HomeComponent},
+        {path:'followers/:username', component:GithubFollowersComponent},
+        {path:'profile/', component:HomeComponent},
+        {path:'posts', component:PostsComponent},
+        {path:'**', component:NotFoundComponent},
+    ])
   ],
   providers: [
     /*  Angular autometically inject the instance of the service class to 
@@ -64,6 +80,7 @@ import { AppErrorHandler } from './common/app-error-handler';
     CoursesService,
     AuthorsService,
     PostService,
+    FollowerService,
     {provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]

@@ -1,0 +1,9 @@
+<p>Github Followers</p>
+<div *ngFor="let follower of followers" class="d-flex">
+    <img [src]="follower.avatar_url" alt="avatar">
+    <div >
+         <h2>{{follower.login}}</h2>
+         <p><a [href]="follower.html_url">{{follower.html_url}}</a> </p>
+    </div>
+</div>
+
